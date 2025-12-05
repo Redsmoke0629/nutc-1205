@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龍年大吉！精緻計算工具</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* CSS 變數 */
+        :root {
+            --new-year-red: #9A031E; 
+            --new-year-gold: #FFC300; 
+            --new-year-light: #FFECEC; 
+            /* 導入的字體名稱 */
+            --font-body: 'Noto Sans TC', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        /* 呼吸動畫 (保持不變) */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 195, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 195, 0, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 195, 0, 0.4); }
+        }
+
+        /* 頁面整體：使用 Noto Sans TC 作為基本字體 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FF4B3A 0%, #FFC300 100%); 
+            color: #333; 
+            font-family: var(--font-body); /* 全頁文字使用 Noto Sans TC */
+        }
+
+        .new-year-card {
+            background-color: var(--new-year-light);
+            border: 8px double var(--new-year-red);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            width: 100%;
+            animation: pulse 3s infinite alternate; 
+        }
+
+        /* 標題樣式：使用 Noto Sans TC 粗體 */
+        .card-title {
+            color: var(--new-year-red);
+            font-weight: 900; /* 使用 Noto Sans TC 的最粗字重 */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+            border-bottom: 5px solid var(--new-year-gold);
+            padding-bottom: 15px;
+            margin-bottom: 30px !important;
+        }
+
+        .form-control {
+            border: 2px solid var(--new-year-red);
+            background-color: #fff;
+            font-family: var(--font-body); /* 確保輸入框也使用美觀字體 */
+        }
+        
+        .btn-gold {
+            background: linear-gradient(180deg, #FFD700 0%, #FFC300 100%); 
+            border: none;
+            color: var(--new-year-red);
+            font-weight: bold;
+            font-size: 1.25rem;
+            transition: transform 0.1s, box-shadow 0.3s;
+            font-family: var(--font-body); /* 按鈕字體使用 Noto Sans TC */
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 195, 0, 0.6);
+        }
+        
+        /* 結果強調：使用 Playfair Display 讓數字更具設計感 */
+        .result-box {
+            background-color: var(--new-year-red);
+            color: var(--new-year-gold);
+            border-radius: 0.75rem;
+            padding: 15px;
+            margin-top: 25px;
+        }
+        
+        #ans {
+            color: var(--new-year-gold);
+            font-size: 4rem; 
+            font-family: var(--font-display); /* 專門用於結果數字/英文的字體 */
+            font-weight: 900; /* Playfair Display 最粗字重 */
+            text-shadow: 0 0 10px #FFD700;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card new-year-card"> 
+                    <div class="card-body text-center">
+                        <h1 class="card-title">馬年大吉！精緻計算工具</h1> 
+
+                        <div class="mb-3">
+                            <label for="a" class="form-label fw-bold">🐲 數字 A</label>
+                            <input id="a" type="number" class="form-control" placeholder="請輸入第一個吉祥數字">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="b" class="form-label fw-bold">💰 數字 B</label>
+                            <input id="b" type="number" class="form-control" placeholder="請輸入第二個發財數字">
+                        </div>
+
+                        <button onclick="calculate()" class="btn btn-gold w-100 mb-4">✨ 龍騰虎躍！點我計算 ✨</button> 
+
+                        <div class="result-box">
+                            <p class="h5 mb-1 fw-bold">合算結果：</p>
+                            <span id="ans">0</span> 
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const inputA = document.getElementById("a");
+            const inputB = document.getElementById("b");
+            const ansDom = document.getElementById("ans");
+            ansDom.innerText =+ (inputA.value) + + (inputB.value);
+        }
+    </script> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
